@@ -1,0 +1,16 @@
+// -- Folder Resource Done --//
+
+[view/] All Done
+
+// -- Folder Resource UnDone --//
+
+[view/component/avatar]
+[view/contact/contact_map]
+[view/contact/index]
+[view/install/partials/e_licence]
+[view/install/partials/i_service]
+[view/install/index]
+[view/manage_user/show]
+[view/vendor/log_viewer/bootstrap_3/_master]
+[view/vendor/log_viewer/bootstrap_4/_master]
+
