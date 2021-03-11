@@ -9,3 +9,7 @@
 		<img class="user_avatar" src="https://ui-avatars.com/api/?name=...." data-toggle="tooltip" title="...">
 	@endif
 @endforeach
+
+<script type="text/javascript">
+	
+</script>

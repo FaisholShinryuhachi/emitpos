@@ -14,9 +14,11 @@
 include_once('install_r.php');
 
 Route::middleware(['setData'])->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    // Route::get('/', function () {
+    //     // return view('welcome');
+    // });
+
+    Route::redirect('/', '/login');
 
     Auth::routes();
 
@@ -377,4 +379,18 @@ Route::middleware(['setData', 'auth', 'SetSessionData', 'language', 'timezone'])
     Route::get('/sells/{transaction_id}/print', 'SellPosController@printInvoice')->name('sell.printInvoice');
     Route::get('/sells/invoice-url/{id}', 'SellPosController@showInvoiceUrl');
     Route::get('/show-notification/{id}', 'HomeController@showNotification');
+});
+
+
+//Route untuk clear cache
+Route::get('clear-cache', function () {
+
+
+    // \Artisan::call('config:cache');
+    // \Artisan::call('route:cache');
+    // \Artisan::call('cache:clear');
+    // \Artisan::call('view:clear');
+   
+    dd("Cache is cleared");
+
 });

@@ -22,12 +22,14 @@
                         @php
                             if(isset($user->media->display_url)) {
                                 $img_src = $user->media->display_url;
+                                $default = "ada";
                             } else {
+                                $default = "kosong";
                                 $img_src = 'https://ui-avatars.com/api/?name='.$user->first_name;
                             }
                         @endphp
 
-                        <img class="profile-user-img img-responsive img-circle" src="{{$img_src}}" alt="User profile picture">
+                        <img class="profile-user-img img-responsive img-circle" src="{{$img_src}}" alt="User profile picture" def="{{$default}}" >
 
                         <h3 class="profile-username text-center">
                             {{$user->user_full_name}}
@@ -138,6 +140,29 @@
     @include('documents_and_notes.document_and_note_js')
 
     <script type="text/javascript">
+
+        function generateAvatar(text, foregroundColor, backgroundColor) {
+            const canvas = document.createElement("canvas");
+            const context = canvas.getContext("2d");
+
+            canvas.width = 200;
+            canvas.height = 200;
+
+            // Draw background
+            context.fillStyle = backgroundColor;
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw text
+            context.font = "bold 100px Assistant";
+            context.fillStyle = foregroundColor;
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+            return canvas.toDataURL("image/png");
+        }
+
+
         $(document).ready( function(){
             $('#user_id').change( function() {
                 if ($(this).val()) {
@@ -145,5 +170,12 @@
                 }
             });
         });
+
+        $(document).ready(() => {
+            // const data = document.getElementById("avatar").src = generateAvatar("SP", "white", "#009578");
+            let data = document.getElementsByClassName("profile-user-img");
+            console.log(data);
+        });
+
     </script>
 @endsection
